@@ -11,44 +11,52 @@ def read_xvg(file_path):
                 data.append(list(map(float, line.split())))
     return np.array(data)
 
-# Lista de arquivos .xvg para RMSF, excluindo GmDef7
+# Lista de arquivos .xvg, excluindo GmDef7
 file_paths = [
-    'rmsf-GmDef2.xvg',
-    'rmsf-GmDef3.xvg',
-    'rmsf-GmDef4.xvg',
-    'rmsf-GmDef5.xvg',
-    'rmsf-GmDef6.xvg',
-    'rmsf-GmDef8.xvg',
-    'rmsf-GmDef9.xvg',
-    'rmsf-GmDef10.xvg',
-    'rmsf-GmDef11.xvg',
-    'rmsf-GmDef12.xvg',
-    'rmsf-GmDef13.xvg',
-    'rmsf-GmDef14.xvg',
-    'rmsf-GmDef15.xvg',
-    'rmsf-GmDef16.xvg',
-    'rmsf-GmDef17.xvg',
-    'rmsf-GmDef18.xvg',
-    'rmsf-GmDef19.xvg',
-    'rmsf-GmDef20.xvg',
-    'rmsf-GmDef21.xvg',
-    'rmsf-GmDef22.xvg',
+    'rmsd-GmDef2.xvg',
+    'rmsd-GmDef3.xvg',
+    'rmsd-GmDef4.xvg',
+    'rmsd-GmDef5.xvg',
+    'rmsd-GmDef6.xvg',
+    'rmsd-GmDef8.xvg',
+    'rmsd-GmDef9.xvg',
+    'rmsd-GmDef10.xvg',
+    'rmsd-GmDef11.xvg',
+    'rmsd-GmDef12.xvg',
+    'rmsd-GmDef13.xvg',
+    'rmsd-GmDef14.xvg',
+    'rmsd-GmDef15.xvg',
+    'rmsd-GmDef16.xvg',
+    'rmsd-GmDef17.xvg',
+    'rmsd-GmDef18.xvg',
+    'rmsd-GmDef19.xvg',
+    'rmsd-GmDef20.xvg',
+    'rmsd-GmDef21.xvg',
+    'rmsd-GmDef22.xvg',
 ]
 
 # Carregar os dados
 data = [read_xvg(file) for file in file_paths]
 
 # Convertendo para DataFrame para facilitar a manipulação
-dfs = [pd.DataFrame(d, columns=['Time', 'RMSF']) for d in data]
+dfs = [pd.DataFrame(d, columns=['Time', 'RMSD']) for d in data]
+
+# Calcular a Média Móvel (Rolling Average) para todos os datasets
+window_size = 50  # Defina o tamanho da janela de suavização
+for df in dfs:
+    df['Rolling_RMSD'] = df['RMSD'].rolling(window=window_size).mean()
 
 # Calcular limites do eixo y
-all_rmsf = np.concatenate([df['RMSF'] for df in dfs])
-y_min, y_max = all_rmsf.min(), all_rmsf.max()
+all_rmsd = np.concatenate([df['RMSD'] for df in dfs])
+y_min, y_max = all_rmsd.min(), all_rmsd.max()
 
 # Criar subplots com 4 linhas e 6 colunas para acomodar 21 gráficos
 fig, axs = plt.subplots(4, 6, figsize=(30, 20), dpi=300)  # Ajuste o figsize conforme necessário
 
-# Definir cores diferentes para cada gráfico puro
+# Definir o limite x máximo comum a todos os gráficos
+x_max = max(df['Time'].max() for df in dfs)
+
+# Definir cores diferentes para cada gráfico bruto (cores mais claras)
 colors = [
     '#00FFFF',  # GmDef2
     '#FF6F61',  # GmDef3
@@ -72,6 +80,9 @@ colors = [
     '#FFB74D'   # GmDef22
 ]
 
+# Cor cinza escuro para a média
+average_color = '#4B4B4B'  # Cinza escuro
+
 # Plotar os gráficos
 for i, df in enumerate(dfs):
     # Ajuste do índice para correspondência correta com o GmDef
@@ -79,18 +90,12 @@ for i, df in enumerate(dfs):
 
     ax = axs[i // 6, i % 6]  # Ajuste para grid 4x6
     base_color = colors[i]
-    ax.plot(df['Time'], df['RMSF'], color=base_color, label=f'RMSD')  # Cor pura
-
-    ax.set_title(f'RMSF - GmDef{actual_gmdef_number}')
-    ax.set_xlabel('Residue (AA)')
-    ax.set_ylabel('RMSF (nm)')
-
-    # Definir limites do eixo x
-    if actual_gmdef_number in [14, 16]:
-        ax.set_xlim([0, 110])
-    else:
-        ax.set_xlim([0, 55])
-
+    ax.plot(df['Time'], df['RMSD'], label=f'RMSD', color=base_color, alpha=0.5)  # Cor clara
+    ax.plot(df['Time'], df['Rolling_RMSD'], label='Mean', color=average_color)  # Cor média
+    ax.set_title(f'RMSD with Rolling Mean - GmDef{actual_gmdef_number}')
+    ax.set_xlabel('Time (ns)')
+    ax.set_ylabel('RMSD (nm)')
+    ax.set_xlim([0, x_max])
     ax.set_ylim([y_min, y_max])  # Define a mesma escala para o eixo y
     ax.legend()
 
@@ -98,7 +103,7 @@ for i, df in enumerate(dfs):
 plt.subplots_adjust(wspace=0.4, hspace=0.4)
 
 # Salvar o gráfico em alta resolução (300 DPI)
-plt.savefig('rmsf_comparison_plot.png', dpi=300)
+plt.savefig('rmsd_comparison_plot_4.png', dpi=300)
 
 # Exibir os gráficos em alta resolução
 plt.show()
