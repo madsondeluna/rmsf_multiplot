@@ -1,0 +1,57 @@
+# This file was created Mon Sep  2 14:52:50 2024
+# Created by:
+#                       :-) GROMACS - gmx rmsf, 2023.5 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/waz/Documentos/madsondeluna/paper_rev_defs/models/cannonial/glyma06g0101001p
+# Command line:
+#   gmx rmsf -f md_0_1noPBC.trr -s md_0_1.tpr -oq bfactor.pdb -ox bfactor_average.pdb -res
+# gmx rmsf is part of G R O M A C S:
+#
+# Giant Rising Ordinary Mutants for A Clerical Setup
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.4849
+    2   0.3409
+    3   0.3453
+    4   0.2001
+    5   0.2415
+    6   0.1543
+    7   0.2616
+    8   0.1076
+    9   0.1881
+   10   0.2372
+   11   0.1842
+   12   0.1630
+   13   0.2267
+   14   0.2301
+   15   0.2519
+   16   0.2377
+   17   0.2289
+   18   0.1284
+   19   0.3229
+   20   0.2620
+   21   0.3256
+   22   0.3518
+   23   0.3083
+   24   0.1573
+   25   0.2260
+   26   0.1361
+   27   0.0971
+   28   0.1480
+   29   0.1092
+   30   0.1266
+   31   0.2218
+   32   0.2013
+   33   0.1472
+   34   0.1649
+   35   0.1732
+   36   0.1551
+   37   0.1629
+   38   0.0948
+   39   0.1814
+   40   0.2320

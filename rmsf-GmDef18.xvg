@@ -1,0 +1,64 @@
+# This file was created Mon Sep  2 16:36:55 2024
+# Created by:
+#                       :-) GROMACS - gmx rmsf, 2023.5 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/waz/Documentos/madsondeluna/paper_rev_defs/models/cannonial/glyma13g2780001p
+# Command line:
+#   gmx rmsf -f md_0_1noPBC.trr -s md_0_1.tpr -oq bfactor.pdb -ox bfactor_average.pdb -res
+# gmx rmsf is part of G R O M A C S:
+#
+# GROtesk MACabre and Sinister
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.3106
+    2   0.1947
+    3   0.1680
+    4   0.1640
+    5   0.1230
+    6   0.1237
+    7   0.0762
+    8   0.1550
+    9   0.1163
+   10   0.0866
+   11   0.3080
+   12   0.1463
+   13   0.1743
+   14   0.0857
+   15   0.2066
+   16   0.2247
+   17   0.0989
+   18   0.0704
+   19   0.0831
+   20   0.0507
+   21   0.0798
+   22   0.0990
+   23   0.1008
+   24   0.0518
+   25   0.1379
+   26   0.1119
+   27   0.1567
+   28   0.1191
+   29   0.2421
+   30   0.1559
+   31   0.1658
+   32   0.1989
+   33   0.0569
+   34   0.1896
+   35   0.0739
+   36   0.1663
+   37   0.2375
+   38   0.2860
+   39   0.2855
+   40   0.1667
+   41   0.0535
+   42   0.2241
+   43   0.0638
+   44   0.1172
+   45   0.2231
+   46   0.2913
+   47   0.2953

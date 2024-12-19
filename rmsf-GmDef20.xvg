@@ -1,0 +1,64 @@
+# This file was created Tue Sep  3 18:40:31 2024
+# Created by:
+#                       :-) GROMACS - gmx rmsf, 2023.5 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /home/waz/Documentos/madsondeluna/paper_rev_defs/models/cannonial/glyma16g1004001p
+# Command line:
+#   gmx rmsf -f md_0_1noPBC.trr -s md_0_1.tpr -oq bfactor.pdb -ox bfactor_average.pdb -res
+# gmx rmsf is part of G R O M A C S:
+#
+# Gyas ROwers Mature At Cryogenic Speed
+#
+@    title "RMS fluctuation"
+@    xaxis  label "Residue"
+@    yaxis  label "(nm)"
+@TYPE xy
+    1   0.2416
+    2   0.1193
+    3   0.0935
+    4   0.1238
+    5   0.0756
+    6   0.1079
+    7   0.0527
+    8   0.1539
+    9   0.1662
+   10   0.1083
+   11   0.2268
+   12   0.1002
+   13   0.0925
+   14   0.0538
+   15   0.1213
+   16   0.0868
+   17   0.1093
+   18   0.0821
+   19   0.1137
+   20   0.0411
+   21   0.0453
+   22   0.0727
+   23   0.0802
+   24   0.0437
+   25   0.1720
+   26   0.0904
+   27   0.0862
+   28   0.1981
+   29   0.0760
+   30   0.0986
+   31   0.0720
+   32   0.0551
+   33   0.1618
+   34   0.0545
+   35   0.1998
+   36   0.0892
+   37   0.2174
+   38   0.2183
+   39   0.1539
+   40   0.1697
+   41   0.0410
+   42   0.0943
+   43   0.0482
+   44   0.0813
+   45   0.1556
+   46   0.1960
+   47   0.1366
