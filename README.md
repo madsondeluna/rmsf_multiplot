@@ -21,6 +21,7 @@ Você pode instalá-las utilizando o `pip`:
 
 ```bash
 pip install pandas numpy matplotlib
+```
 
 ## Aviso
 
